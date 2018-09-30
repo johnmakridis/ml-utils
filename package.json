@@ -1,0 +1,23 @@
+{
+  "name": "ml-utils.js",
+  "version": "1.0.0",
+  "description": "Machine learning tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "John Makridis",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/johnmakridis/ml-utils.js"
+  },
+  "dependencies": {
+    "franc": "^4.0.0",
+    "iso-language-converter": "^1.1.0",
+    "node-kmeans": "^1.1.8",
+    "similarity": "^1.1.1",
+    "wink-sentiment": "^4.0.2",
+    "wink-tokenizer": "^4.1.0"
+  }
+}
