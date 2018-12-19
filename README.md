@@ -17,12 +17,12 @@ A small package that helps developers in machine learning processes
   
 ## Methods
 
-  `getLanguageSync()`
-  `getLanguage()`
-  `getSentimentSync()`
-  `getSentiment()`
-  `getSimilaritySync()`
-  `getSimilarity()`
-  `getTokensSync()`
-  `getTokens()`
-  `getClusters()`
+  `Language detection: getLanguageSync() or getLanguage()`
+  
+  `Sentiment detection: getSentimentSync() or getSentiment()`
+  
+  `Text similarity: getSimilaritySync() or getSimilarity()`
+
+  `Sentence tokenizer: getTokensSync() or getTokens()`
+
+  `k-means clustering: getClusters()`
