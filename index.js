@@ -57,6 +57,15 @@ class Utils {
 
 
     // Text similarity
+    getSimilaritySync(text1, text2) {
+        if (typeof text1 !== "string" || typeof text2 !== "string")
+            return { error: "Both texts must be strings." };
+
+        return similarity(text1, text2);
+    }
+
+
+    // Text similarity (asynchronous)
     getSimilarity(text1, text2) {
         return new Promise((resolve, reject) => {
             if (typeof text1 !== "string" || typeof text2 !== "string")
@@ -64,15 +73,6 @@ class Utils {
 
             resolve(similarity(text1, text2))
         });
-    }
-
-
-    // Text similarity (asynchronous)
-    getSimilaritySync(text1, text2) {
-        if (typeof text1 !== "string" || typeof text2 !== "string")
-            return { error: "Both texts must be strings." };
-
-        return similarity(text1, text2);
     }
 
 
