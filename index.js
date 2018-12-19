@@ -7,11 +7,22 @@ const tokenizer = require("wink-tokenizer");
 
 
 class Utils {
-    constructor() {
+    constructor () {
 
     }
 
+    // Language detection
+    getLanguageSync(text) {
+        if (typeof text !== "string")
+            return reject("The given text must be a string.");
 
+        const language = isoLanguageConverter(franc(text), { from: 3, to: 1 });
+        return language;
+    }
+
+
+
+    // Language detection (asynchronous)
     getLanguage(text) {
         return new Promise((resolve, reject) => {
             if (typeof text !== "string")
@@ -23,6 +34,17 @@ class Utils {
     }
 
 
+    // Sentiment Detection
+    getSentimentSync(text) {
+        if (typeof text !== "string")
+            return reject("The given text must be a string.");
+
+        const sentiment = winkSentiment(text);
+        return sentiment;
+    }
+
+
+    // Sentiment Detection (asynchronous)
     getSentiment(text) {
         return new Promise((resolve, reject) => {
             if (typeof text !== "string")
@@ -34,6 +56,51 @@ class Utils {
     }
 
 
+    // Text similarity
+    getSimilarity(text1, text2) {
+        return new Promise((resolve, reject) => {
+            if (typeof text1 !== "string" || typeof text2 !== "string")
+                return reject("Both texts must be strings.")
+
+            resolve(similarity(text1, text2))
+        });
+    }
+
+
+    // Text similarity (asynchronous)
+    getSimilaritySync(text1, text2) {
+        if (typeof text1 !== "string" || typeof text2 !== "string")
+            return { error: "Both texts must be strings." };
+
+        return similarity(text1, text2);
+    }
+
+
+
+    // Sentence tokenizer
+    getTokensSync(text) {
+        if (typeof text !== "string")
+            return { error: "The given text must be string." };
+
+        let textTokenizer = tokenizer();
+        return textTokenizer.tokenize(text);
+    }
+
+
+    // Sentence tokenizer (asynchronous)
+    getTokens(text) {
+        return new Promise((resolve, reject) => {
+            if (typeof text !== "string")
+                return reject("The given text must be string.")
+
+            let textTokenizer = tokenizer();
+            resolve(textTokenizer.tokenize(text));
+        });
+    }
+
+
+
+    // k-means clustering (asynchronous)
     getClusters(data, k, attributes) {
         return new Promise((resolve, reject) => {
             if (typeof data !== "object" || data.length === 0)
@@ -57,30 +124,8 @@ class Utils {
         });
     }
 
-
-    getSimilarity(text1, text2) {
-        return new Promise((resolve, reject) => {
-            if (typeof text1 !== "string" || typeof text2 !== "string")
-                return reject("Both texts must be strings.")
-
-            resolve(similarity(text1, text2))
-        });
-    }
-
-
-    getTokens(text) {
-        return new Promise((resolve, reject) => {
-            if (typeof text !== "string")
-                return reject("The given text must be string.")
-
-            let textTokenizer = tokenizer();
-            resolve(textTokenizer.tokenize(text));
-        });
-    }
-
-
 }; // End of Class "Utils"
 
 
-module.exports = new Utils();
+module.exports = Utils;
 
