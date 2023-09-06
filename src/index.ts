@@ -10,10 +10,6 @@ const isoLanguageConverter = require('iso-language-converter');
 
 export class MLUtils {
 
-    constructor() {
-
-    }
-
 
     // Language detection
     getLanguageSync(text: string) {

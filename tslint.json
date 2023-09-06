@@ -6,7 +6,7 @@
             "as-needed"
         ],
         "eofline": true,
-        "forin": true,
+        "forin": false,
         "indent": [
             true,
             "spaces"
@@ -23,7 +23,7 @@
         "no-constructor-vars": false,
         "no-debugger": true,
         "no-duplicate-variable": true,
-        "no-empty": true,
+        "no-empty": false,
         "no-eval": true,
         "no-string-literal": false,
         "no-switch-case-fall-through": true,
@@ -51,8 +51,12 @@
         ],
         "typedef": [
             true,
-            "call-signature",
-            "parameter"
+            "callSignature",
+            "indexSignature",
+            "parameter",
+            "propertySignature",
+            "variableDeclarator",
+            "memberVariableDeclarator"
         ],
         "use-strict": false,
         "variable-name": [
