@@ -2,13 +2,14 @@
   "name": "ml-utils.js",
   "version": "1.0.6",
   "description": "Machine learning tools",
-  "main": "index.js",
   "author": "John Makridis",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/johnmakridis/ml-utils.js"
   },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
     "lint": "tslint -p tsconfig.json",
@@ -36,5 +37,8 @@
     "shx": "^0.3.4",
     "tslint": "^6.1.0",
     "typescript": "^4.9.5"
-  }
+  },
+  "files": [
+    "lib/**/*"
+  ]
 }
