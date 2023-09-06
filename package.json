@@ -9,12 +9,30 @@
     "type": "git",
     "url": "https://github.com/johnmakridis/ml-utils.js"
   },
+  "scripts": {
+    "build": "tsc",
+    "lint": "tslint -p tsconfig.json",
+    "prebuild": "shx rm -rf lib",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint",
+    "preversion": "npm run lint",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
+  },
   "dependencies": {
+    "@types/wink-tokenizer": "^4.0.3",
     "franc": "^4.0.0",
     "iso-language-converter": "^1.1.0",
     "node-kmeans": "^1.1.8",
     "similarity": "^1.1.1",
     "wink-sentiment": "^4.0.2",
     "wink-tokenizer": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/franc": "^5.0.1",
+    "@types/node": "^20.5.9",
+    "@types/node-kmeans": "^1.1.0",
+    "@types/similarity": "^1.2.1",
+    "shx": "^0.3.4"
   }
 }
