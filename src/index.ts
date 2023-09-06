@@ -4,7 +4,7 @@ import similarity from 'similarity';
 import Tokenizer from 'wink-tokenizer';
 
 const winkSentiment = require('wink-sentiment');
-const isoLanguageConverter = require("iso-language-converter");
+const isoLanguageConverter = require('iso-language-converter');
 
 
 
@@ -18,8 +18,8 @@ export class MLUtils {
     // Language detection
     getLanguageSync(text: string) {
 
-        if (typeof text !== "string")
-            throw new Error("The given text must be a string.");
+        if (typeof text !== 'string')
+            throw new Error('The given text must be a string.');
 
         const language = isoLanguageConverter(franc(text), { from: 3, to: 1 });
         return language;
@@ -33,8 +33,8 @@ export class MLUtils {
 
         return new Promise((resolve, reject) => {
 
-            if (typeof text !== "string")
-                return reject("The given text must be a string.");
+            if (typeof text !== 'string')
+                return reject('The given text must be a string.');
 
             let language = isoLanguageConverter(franc(text), { from: 3, to: 1 });
 
@@ -49,8 +49,8 @@ export class MLUtils {
     // Sentiment Detection
     getSentimentSync(text: string): { score: number; normalizedScore: number; tokenizedPhrase: { value: string; tag: string; }[]; } {
 
-        if (typeof text !== "string")
-            throw new Error("The given text must be a string.");
+        if (typeof text !== 'string')
+            throw new Error('The given text must be a string.');
 
         const sentiment = winkSentiment(text);
         return sentiment;
@@ -64,8 +64,8 @@ export class MLUtils {
 
         return new Promise((resolve, reject) => {
 
-            if (typeof text !== "string")
-                return reject("The given text must be a string.");
+            if (typeof text !== 'string')
+                return reject('The given text must be a string.');
 
             let sentiment = winkSentiment(text);
             resolve(sentiment);
@@ -78,8 +78,8 @@ export class MLUtils {
 
     // Text similarity
     getSimilaritySync(text1: string, text2: string): number {
-        if (typeof text1 !== "string" || typeof text2 !== "string")
-            throw new Error("Both texts must be strings.");
+        if (typeof text1 !== 'string' || typeof text2 !== 'string')
+            throw new Error('Both texts must be strings.');
 
         return similarity(text1, text2);
     }
@@ -91,8 +91,8 @@ export class MLUtils {
 
         return new Promise((resolve, reject) => {
 
-            if (typeof text1 !== "string" || typeof text2 !== "string")
-                return reject("Both texts must be strings.")
+            if (typeof text1 !== 'string' || typeof text2 !== 'string')
+                return reject('Both texts must be strings.')
 
             resolve(similarity(text1, text2))
 
@@ -105,8 +105,8 @@ export class MLUtils {
     // Sentence tokenizer
     getTokensSync(text: string): { value: string; tag: string; }[] {
 
-        if (typeof text !== "string")
-            throw new Error("The given text must be string.");
+        if (typeof text !== 'string')
+            throw new Error('The given text must be string.');
 
         let textTokenizer = new Tokenizer();
         return textTokenizer.tokenize(text);
@@ -119,8 +119,8 @@ export class MLUtils {
     async getTokens(text: string): Promise<{ value: string; tag: string; }[]> {
         return new Promise((resolve, reject) => {
 
-            if (typeof text !== "string")
-                return reject("The given text must be string.")
+            if (typeof text !== 'string')
+                return reject('The given text must be string.')
 
             let textTokenizer = new Tokenizer();
             resolve(textTokenizer.tokenize(text));
@@ -133,12 +133,12 @@ export class MLUtils {
     // k-means clustering (asynchronous)
     async getClusters(data: any[], k: number, attributes?: string[]): Promise<[{ centroid: number[]; cluster: [][]; clusterInd: number[]; }]> {
         return new Promise((resolve, reject) => {
-            if (typeof data !== "object" || data.length === 0)
-                return reject("The given data is not an array of objects.")
-            if (typeof k !== "number" || k <= 0)
-                return reject("The number of clusters k must be a number (greather than zero)");
-            if (typeof attributes !== "object" || attributes.length < 2)
-                return reject("The given attributes must be an array with two values");
+            if (typeof data !== 'object' || data.length === 0)
+                return reject('The given data is not an array of objects.')
+            if (typeof k !== 'number' || k <= 0)
+                return reject('The number of clusters k must be a number (greather than zero)');
+            if (typeof attributes !== 'object' || attributes.length < 2)
+                return reject('The given attributes must be an array with two values');
 
             let vectors = new Array();
             for (let v = 0; v < data.length; v++) {
@@ -157,4 +157,4 @@ export class MLUtils {
 
     }
 
-}; // End of Class "Utils"
+}; // End of Class 'Utils'
