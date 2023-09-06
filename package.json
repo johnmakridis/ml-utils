@@ -33,6 +33,7 @@
     "@types/node": "^20.5.9",
     "@types/node-kmeans": "^1.1.0",
     "@types/similarity": "^1.2.1",
-    "shx": "^0.3.4"
+    "shx": "^0.3.4",
+    "tslint": "^6.1.0"
   }
 }
