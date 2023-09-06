@@ -32,7 +32,7 @@ export class MLUtils {
             if (typeof text !== 'string')
                 return reject('The given text must be a string.');
 
-            let language = isoLanguageConverter(franc(text), { from: 3, to: 1 });
+            const language = isoLanguageConverter(franc(text), { from: 3, to: 1 });
 
             resolve(language);
 
@@ -63,7 +63,7 @@ export class MLUtils {
             if (typeof text !== 'string')
                 return reject('The given text must be a string.');
 
-            let sentiment = winkSentiment(text);
+            const sentiment = winkSentiment(text);
             resolve(sentiment);
 
         });
@@ -104,7 +104,7 @@ export class MLUtils {
         if (typeof text !== 'string')
             throw new Error('The given text must be string.');
 
-        let textTokenizer = new Tokenizer();
+        const textTokenizer = new Tokenizer();
         return textTokenizer.tokenize(text);
 
     }
@@ -118,7 +118,7 @@ export class MLUtils {
             if (typeof text !== 'string')
                 return reject('The given text must be string.')
 
-            let textTokenizer = new Tokenizer();
+            const textTokenizer = new Tokenizer();
             resolve(textTokenizer.tokenize(text));
 
         });
@@ -136,7 +136,8 @@ export class MLUtils {
             if (typeof attributes !== 'object' || attributes.length < 2)
                 return reject('The given attributes must be an array with two values');
 
-            let vectors = new Array();
+            const vectors = new Array();
+
             for (let v = 0; v < data.length; v++) {
                 vectors[v] = [data[v][attributes[0]], data[v][attributes[1]]];
             }
