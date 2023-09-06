@@ -7,59 +7,72 @@ const tokenizer = require("wink-tokenizer");
 
 
 class Utils {
-    constructor () {
+    constructor() {
 
     }
 
     // Language detection
     getLanguageSync(text) {
+
         if (typeof text !== "string")
-            return reject("The given text must be a string.");
+            throw new Error("The given text must be a string.");
 
         const language = isoLanguageConverter(franc(text), { from: 3, to: 1 });
         return language;
+
     }
 
 
 
     // Language detection (asynchronous)
     getLanguage(text) {
+
         return new Promise((resolve, reject) => {
+
             if (typeof text !== "string")
                 return reject("The given text must be a string.");
 
             let language = isoLanguageConverter(franc(text), { from: 3, to: 1 });
+
             resolve(language);
+
         });
+
     }
 
 
     // Sentiment Detection
     getSentimentSync(text) {
+
         if (typeof text !== "string")
-            return reject("The given text must be a string.");
+            throw new Error("The given text must be a string.");
 
         const sentiment = winkSentiment(text);
         return sentiment;
+
     }
 
 
     // Sentiment Detection (asynchronous)
     getSentiment(text) {
+
         return new Promise((resolve, reject) => {
+
             if (typeof text !== "string")
                 return reject("The given text must be a string.");
 
             let sentiment = winkSentiment(text);
             resolve(sentiment);
+
         });
+
     }
 
 
     // Text similarity
     getSimilaritySync(text1, text2) {
         if (typeof text1 !== "string" || typeof text2 !== "string")
-            return { error: "Both texts must be strings." };
+            throw new Error("Both texts must be strings.");
 
         return similarity(text1, text2);
     }
@@ -80,7 +93,7 @@ class Utils {
     // Sentence tokenizer
     getTokensSync(text) {
         if (typeof text !== "string")
-            return { error: "The given text must be string." };
+            throw new Error("The given text must be string.");
 
         let textTokenizer = tokenizer();
         return textTokenizer.tokenize(text);
@@ -90,11 +103,13 @@ class Utils {
     // Sentence tokenizer (asynchronous)
     getTokens(text) {
         return new Promise((resolve, reject) => {
+
             if (typeof text !== "string")
                 return reject("The given text must be string.")
 
             let textTokenizer = tokenizer();
             resolve(textTokenizer.tokenize(text));
+
         });
     }
 
