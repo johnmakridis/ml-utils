@@ -35,6 +35,6 @@
     "@types/similarity": "^1.2.1",
     "shx": "^0.3.4",
     "tslint": "^6.1.0",
-    "typescript": "^5.2.2"
+    "typescript": "^4.9.5"
   }
 }

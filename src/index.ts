@@ -88,9 +88,9 @@ export class MLUtils {
         return new Promise((resolve, reject) => {
 
             if (typeof text1 !== 'string' || typeof text2 !== 'string')
-                return reject('Both texts must be strings.')
+                return reject('Both texts must be strings.');
 
-            resolve(similarity(text1, text2))
+            resolve(similarity(text1, text2));
 
         });
 
@@ -116,7 +116,7 @@ export class MLUtils {
         return new Promise((resolve, reject) => {
 
             if (typeof text !== 'string')
-                return reject('The given text must be string.')
+                return reject('The given text must be string.');
 
             const textTokenizer = new Tokenizer();
             resolve(textTokenizer.tokenize(text));
@@ -128,19 +128,23 @@ export class MLUtils {
 
     // k-means clustering (asynchronous)
     async getClusters(data: any[], k: number, attributes?: string[]): Promise<[{ centroid: number[]; cluster: [][]; clusterInd: number[]; }]> {
+
         return new Promise((resolve, reject) => {
+
             if (typeof data !== 'object' || data.length === 0)
-                return reject('The given data is not an array of objects.')
+                return reject('The given data is not an array of objects.');
+
             if (typeof k !== 'number' || k <= 0)
                 return reject('The number of clusters k must be a number (greather than zero)');
+
             if (typeof attributes !== 'object' || attributes.length < 2)
                 return reject('The given attributes must be an array with two values');
 
             const vectors = new Array();
 
-            for (let v = 0; v < data.length; v++) {
+            for (let v = 0; v < data.length; v++)
                 vectors[v] = [data[v][attributes[0]], data[v][attributes[1]]];
-            }
+
 
             kmeans.clusterize(vectors, { k: k }, (err: any, res: any) => {
                 if (err)
@@ -154,4 +158,4 @@ export class MLUtils {
 
     }
 
-}; // End of Class 'Utils'
+} // End of Class 'Utils'
